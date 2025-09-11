@@ -1,21 +1,11 @@
+let count = 1;
 
-let contraseña = "admin123";
-if (contraseña == "admin123") {
-    console.log("Acceso concedido");
-} else {
-    console.log("Acceso denegado");
+while (count <= 50) {
+    console.log(count);
+    count++;
 }
 
-switch (contraseña) {
-    case "admin123":
-        console.log("Acceso como administrador");
-        break;
-    case "user123":
-        console.log("Acceso como usuario");
-        break;
-    default:
-        console.log("Acceso denegado");
-        break;
+let names = ['Ryan', 'Joe', 'John',];
+for (let i = 0; i < names.length; i++) {
+    console.log(names[i]);
 }
-
-
