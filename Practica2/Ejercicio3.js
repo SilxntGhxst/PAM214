@@ -9,7 +9,7 @@ const buscarluis = personas.find(persona => persona.nombre === "Luis");
 console.log(buscarluis);
 
 //For each
-personas.forEach(persona => console.log(persona.nombre));
+personas.forEach(persona => console.log(persona.nombre + " tiene " + persona.edad + " años"));
 
 //Reduce
 const sumaEdades = personas.reduce((total, persona) => total + persona.edad, 0);
