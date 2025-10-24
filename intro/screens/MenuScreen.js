@@ -38,37 +38,40 @@ export default function MenuScreen() {
       return (
         <View style={styles.container}>
           <Text style={styles.textoMenu}>Menu Screen</Text>
-          <View style={styles.contenedorBotones}>          
-          <Button
-            onPress={() => setScreen("contador")}
-            title="Pract: Contador"
-          />
-          <Button onPress={() => setScreen("botones")} title="Pract: Buttons" />
-          <Button
-            onPress={() => setScreen("TextImput")}
-            title="Pract: TextImput"
-          />
-          <Button
-            onPress={() => setScreen("ImageBackground")}
-            title="Pract: ImageBackground"
-          />
-          <Button
-            onPress={() => setScreen("ScrollView")}
-            title="Pract: ScrollView"
-          />
-          <Button
-            onPress={() => setScreen("ActivityIndicator")}
-            title="Pract: ActivityIndicator"
-          />
-          <Button
-            onPress={() => setScreen("FlatList")}
-            title="Pract: FlatList"
-          />
-          <Button onPress={() => setScreen("Modal")} title="Pract:Modal" />
-          <Button
-            onPress={() => setScreen("BottomSheet")}
-            title="Pract: BottomSheet"
-          />
+          <View style={styles.contenedorBotones}>
+            <Button
+              onPress={() => setScreen("contador")}
+              title="Pract: Contador"
+            />
+            <Button
+              onPress={() => setScreen("botones")}
+              title="Pract: Buttons"
+            />
+            <Button
+              onPress={() => setScreen("TextImput")}
+              title="Pract: TextImput"
+            />
+            <Button
+              onPress={() => setScreen("ImageBackground")}
+              title="Pract: ImageBackground"
+            />
+            <Button
+              onPress={() => setScreen("ScrollView")}
+              title="Pract: ScrollView"
+            />
+            <Button
+              onPress={() => setScreen("ActivityIndicator")}
+              title="Pract: ActivityIndicator"
+            />
+            <Button
+              onPress={() => setScreen("FlatList")}
+              title="Pract: FlatList"
+            />
+            <Button onPress={() => setScreen("Modal")} title="Pract:Modal" />
+            <Button
+              onPress={() => setScreen("BottomSheet")}
+              title="Pract: BottomSheet"
+            />
           </View>
         </View>
       );
@@ -92,10 +95,9 @@ const styles = StyleSheet.create({
     textDecorationLine: "none",
   },
 
-  contenedorBotones:{
+  contenedorBotones: {
     marginTop: 40,
     flexDirection: "column",
     gap: 15,
   },
-
 });
