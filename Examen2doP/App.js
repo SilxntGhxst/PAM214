@@ -1,10 +1,16 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { Alert, Button, ScrollView, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { ImageBackground } from "react-native-web";
 
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
+
+
+  const mostrarAlerta = () => {
+    Alert.alert('Editando perfil...', Button, ['Guardar', 'Cancelar'])
+    alert('Editando perfil...', )
+  }
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -22,10 +28,13 @@ export default function App() {
   }
 
   return (
+    
     <ImageBackground style={styles.background}
     source={{uri: "https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-minimalista_23-2148816119.jpg"}}
     >
+      <ScrollView>
       <View style={styles.container}>
+        
         <Text style={styles.Title}>Información del desarrollador</Text>
         <Text style={styles.textContent}>Nombre: Santiago Antonio Meneses Rangel</Text>
         <Text style={styles.textContent}>Profesión: Ingeniero en Tecnologías de la Información</Text>
@@ -34,12 +43,20 @@ export default function App() {
           colonia colindante con Loarca y Ciudad del Sol, curso la primaria, secundaria y preparatoria
           en el mismo municipio, actualmente estudia en la Universidad Politécnica de Querétaro.
         </Text>
-        <Text style={styles.textContentBold}></Text>
-
-        
+        <Text style={styles.textContentBold}>Información de contacto:</Text>
+        <Text style={styles.textContent}>Email: sanmenesest17@gmail.com</Text>
+        <Text style={styles.textContentEnd}>Tel. 4426793127</Text>
+        <Button 
+        color='#0073ffff'
+        title='Editar Perfil'
+        onPress={mostrarAlerta}/>
+      
         <StatusBar style="auto" />
+        
       </View>
+      </ScrollView>
     </ImageBackground>
+
   );
 }
 
@@ -51,6 +68,7 @@ const styles = StyleSheet.create({
     padding: 30,
     borderRadius: 10,
     margin: 100,
+    marginBottom: 500,
   },
   Title:{
     fontSize: 30,
@@ -65,9 +83,16 @@ const styles = StyleSheet.create({
     fontWeight:'400',
     color: '#fff',
   },
-    textContentBold:{
-    margin: 15,
+    textContentEnd:{
+    marginBottom: 1500,
     fontSize: 20,
+    fontWeight:'400',
+    color: '#fff',
+  },
+    textContentBold:{
+    marginBottom: 15,
+    marginTop: 30,
+    fontSize: 25,
     fontWeight:'400',
     color: '#fff',
     fontWeight: 'bold',
