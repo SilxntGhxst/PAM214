@@ -35,17 +35,14 @@ class DatabaseService {
   async add(nombre) {
     if (Platform.OS === 'web') {
       const usuarios = await this.getAll();
-
       const nuevoUsuario = {
         id: Date.now(),
         nombre,
         fecha_creacion: new Date().toISOString()
       };
-
       usuarios.unshift(nuevoUsuario);
       localStorage.setItem(this.storageKey, JSON.stringify(usuarios));
       return nuevoUsuario;
-
     } else {
       const result = await this.db.runAsync(
         'INSERT INTO usuarios(nombre) VALUES(?)',
@@ -58,7 +55,42 @@ class DatabaseService {
       };
     }
   }
+
+  // --- NUEVO: Función para ACTUALIZAR ---
+  async update(id, nombre) {
+    if (Platform.OS === 'web') {
+      const usuarios = await this.getAll();
+      const index = usuarios.findIndex(u => u.id === id);
+      if (index !== -1) {
+        usuarios[index].nombre = nombre;
+        localStorage.setItem(this.storageKey, JSON.stringify(usuarios));
+        return usuarios[index];
+      }
+      throw new Error('Usuario no encontrado');
+    } else {
+      await this.db.runAsync(
+        'UPDATE usuarios SET nombre = ? WHERE id = ?',
+        nombre, id
+      );
+      return { id, nombre };
+    }
+  }
+
+  // --- NUEVO: Función para ELIMINAR ---
+  async delete(id) {
+    if (Platform.OS === 'web') {
+      let usuarios = await this.getAll();
+      usuarios = usuarios.filter(u => u.id !== id);
+      localStorage.setItem(this.storageKey, JSON.stringify(usuarios));
+      return true;
+    } else {
+      await this.db.runAsync(
+        'DELETE FROM usuarios WHERE id = ?',
+        id
+      );
+      return true;
+    }
+  }
 }
 
-// Exportar instancia de la clase
 export default new DatabaseService();
